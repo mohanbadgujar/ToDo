@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-4.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<context:component-scan base-package="com"></context:component-scan>
+
+	<context:property-placeholder location="classpath:/email.properties" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<task:annotation-driven executor="myExecutor"
+		scheduler="myScheduler" />
+	<task:executor id="myExecutor" pool-size="5" />
+	<task:scheduler id="myScheduler" pool-size="10" />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:messages</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${email.host}" />
+		<property name="port" value="${email.port}" />
+		<property name="username" value="${email.username}" />
+		<property name="password" value="${email.password}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">${email.auth}</prop>
+				<prop key="mail.smtp.starttls.enable">${email.starttls}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="dataSource"
+
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+
+		<property name="url" value="jdbc:mysql://localhost:3306/Fundoo" />
+
+		<property name="username" value="root" />
+
+		<property name="password" value="bridgeit" />
+
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="annotatedClasses">
+			<list>
+				<value>com.bridgelabz.model.User</value>
+				<value>com.bridgelabz.model.Note</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect.storage_engine">innodb</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="sendMail" class="com.bridgelabz.util.SendEmail">
+		<property name="mailSender" ref="mailSender"></property>
+	</bean>
+
+	<bean id="userDao" class="com.bridgelabz.dao.UserDaoImpl" />
+
+	<bean id="userService" class="com.bridgelabz.services.UserServices" />
+
+	<bean id="noteDao" class="com.bridgelabz.dao.NoteDaoImpl" />
+
+	<bean id="noteService" class="com.bridgelabz.services.NoteService" />
+
+	<bean id="userValidation" class="com.bridgelabz.validator.UserValidation" />
+	
+	<mvc:resources location="/template/" mapping="/template/**" />
+	<mvc:resources location="/style/" mapping="/style/**" />
+	<mvc:resources location="/script/" mapping="/script/**" />
+	<mvc:resources location="/service/" mapping="/service/**" />
+	<mvc:resources location="/controller/" mapping="/controller/**" />
+	<mvc:resources location="/Directives/" mapping="/Directives/**" />
+	<mvc:resources location="/images/" mapping="/images/**" />
+	<mvc:resources location="/bower_components/" mapping="/bower_components/**" />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/**" /> 
+			<mvc:mapping path="/note/**" />
+			<bean id="loginInterceptor" class="com.bridgelabz.util.Interceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+</beans>

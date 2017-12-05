@@ -1,0 +1,58 @@
+<div>
+	<top-navigation-bar></top-navigation-bar>
+	<div class="row">
+		<div class="col-sm-2" id="sidebarWrapper" ng-show="showSideBar">
+			<side-navigation-bar></side-navigation-bar>
+		</div>
+		<div id="mainHome">
+			<div class="col-sm-10" id="mainWrapper">
+				<br> <br>
+				<add-notes></add-notes>
+
+				<div ng-click="AddNoteBox=false; AddNoteColor='#ffffff'">
+
+					<h4>Pinned</h4>
+					<h4>Others</h4>
+					<div class="card"
+						style="background-color: #F9F8F4; margin: 10px 10px 10px 10px;"
+						ng-repeat="note in userNotes">
+
+						<div id="moreOptions" style="float: right">
+							<span style="cursor: pointer"> <img alt="pin"
+								style="height: 17px" src="images/pinblack.png" />
+							</span>
+						</div>
+
+						<div id="edittitle" contenteditable="true" ng-bind="note.title"></div>
+						<br>
+						<div id="editdescription" contenteditable="true"
+							ng-bind="note.description"></div>
+						<br>
+
+						<div class="dropdown" style="float: left">
+							<a data-toggle="dropdown"><img alt="color"
+								src="images/menu.svg" height="18px"></a>
+							<ul class="dropdown-menu">
+								<li><a href="" ng-click="deleteNote(note)">Delete</a></li>
+								<li><a href="" ng-click="updateNote(note)">Update</a></li>
+								<li><a href="">Make a copy</a></li>
+								<li><a href="">Copy Google Doc</a></li>
+							</ul>
+						</div>
+
+						<div>
+							<img alt="color" src="images/colorpallete.svg" height="18px">
+							<img alt="reminder" src="images/reminder.svg" height="15px">
+							<img alt="image" src="images/image.svg" height="20px"> <img
+								alt="archive" ng-click="archiveNote(note)"
+								src="images/archive.svg" height="20px">
+							<!-- <button ng-click="deleteNote(note)">DELETE</button>  -->
+
+							<br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

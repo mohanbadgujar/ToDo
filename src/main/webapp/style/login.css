@@ -1,0 +1,50 @@
+#form {
+	float: none;
+	background-color: white;
+	top: 90px;
+	min-height: 450px;
+	margin: 0 auto;
+	box-shadow: 0 0 30px black;
+}
+
+.registration {
+	font-size: 35px;
+	font-family: Agency FB;
+	font-weight: 600;
+}
+
+.form-group input {
+	width: 100% margin-bottom:20px;
+}
+
+.form-group {
+	position: relative;
+}
+
+.form-group span {
+	position: absolute;
+	top: 35px;
+	left: 10px;
+	color = #262626;
+}
+
+.form-group input[type="email"], .form-group input[type="password"] {
+	-webkit-box-shadow: none;
+	outline: -webkit-focus-ring-color auto 0px;
+	outline: -webkit-focus-ring-color auto 0px;
+	outline: none;
+	height: 40px;
+	color: #262626;
+	background: transparent;
+	font-size: 16px;
+	padding-left: 28px;
+}
+
+#signupbtn,#signinbtn {
+	outline: none;
+	border: none;
+	height: 40px;
+	width: 49%;
+	border-radius: 3px;
+	cursor: pointer;
+}

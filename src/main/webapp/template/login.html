@@ -1,0 +1,77 @@
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-md-5 col-lg-5 col-sm-7 col-xs-11" id="form">
+
+			<center>
+				<b class="registration">LogIn</b>
+			</center>
+
+			<br>
+
+			<div class="form-group">
+				<label class="control-label">Email</label> <span><i
+					class="fa fa-user" aria-hidden="true"></i></span> <input type="email"
+					class="form-control" ng-model="user.email" name="email" id="email"
+					placeholder="UserName">
+				<p id="Error"></p>
+
+			</div>
+
+			<br>
+
+			<div class="form-group">
+				<label class="control-label">Password</label> <span><i
+					class="fa fa-lock" aria-hidden="true"></i></span> <input type="password"
+					class="form-control" ng-model="user.password" name="password"
+					id="pass" placeholder="Password">
+				<!-- onkeyup="sendInform() -->
+				<p id="ErrorPass"></p>
+
+			</div>
+
+			<!-- #messages is where the messages are placed inside -->
+			<div class="form-group">
+				<div class="col-md-9 col-md-offset-2">
+					<div id="messages"></div>
+
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<a href="#!/forgotPassword">Forgot password?</a>
+			</div>
+
+			<br>
+
+			<div class="form-group">
+				<button class="btn btn-primary" id="signinbtn"
+					ng-click="loginUser(user)">Sign In</button>
+				<button class="btn btn-danger" id="signupbtn"
+					ng-click="redirectreg()">SignUp</button>
+			</div>
+
+			<br>
+
+			<div class="col-sm-12 col-sm-offset-1 controls">
+				<a id="btn-fblogin" href="http://localhost:8080/ToDo/facebooklogin"
+					class="btn btn-facebook">Login with Facebook</a> <a
+					id="btn-googlelogin" href="http://localhost:8080/ToDo/googlelogin"
+					class="btn btn-google">Login with Google+</a>
+			</div>
+			<br>
+
+			<p>
+			<center>
+				<font color=red size=4px>{{error}}</font>
+			</center>
+			</p>
+
+			<br>
+
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,90 @@
+<body>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-5 col-lg-5 col-sm-6 col-xs-10" id="form">
+
+				<center>
+					<b class="registration">Sign Up Here</b>
+				</center>
+
+				<form>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"
+							style="width: 18px;"></i></span> <input class="form-control" type="text" ng-model="user.fullName"
+							name="name" id="name" placeholder="Full Name">
+
+					</div>
+					<p id="userNameError"></p>
+					<p><font color="red"><form:err path="fullName" /></font></p>
+					<br>
+
+					<div class="input-group margin-bottom-sm">
+						<span class="input-group-addon"><i
+							class="fa fa-envelope-o fa-fw"></i></span> <input class="form-control"
+							type="text" ng-model="user.email" id="Email" name="Email" placeholder="Email address">
+
+					</div>
+					<p id="userEmailError"></p>
+					<P><font color="red"><form:errors path="email" /></font></p>
+
+					<br>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+						<input class="form-control" type="password" ng-model="user.password" id="Pass" name="pass"
+							placeholder="Password">
+
+					</div>
+					<p id="userPassError"></p>
+
+					<br>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+						<input class="form-control" type="password" ng-model="user.repassword"  id="RePass"
+							name="RePass" placeholder="Re-Enter Password">
+
+					</div>
+					<p id="userRepassError"></p>
+
+					<br>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-mobile"
+							style="font-size: 1.4em; width: 18px;"></i></span>
+						<input class="form-control" type="text" ng-model="user.mobile" name="mobile" id="mobile"
+							placeholder="Mobile Number">
+
+					</div>
+					<p id="userMobileError"></p>
+
+					<br>
+
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary" name="Login"
+							value="Register" ng-click="registerUser(user)" >
+							
+						<input type="reset" class="btn btn-danger" name="SignIn"
+							value="Reset">
+					</div>
+
+					<div class="form-group">
+						<center>
+							<a href="" ng-click="login()">Already Registered!! Login Here</a>
+						</center>
+					</div>
+					<br>
+
+					<p><center><font color=red size=4px>{{error}}</font></center></p>
+					<br>
+
+				</form>
+
+			</div>
+
+		</div>
+	</div>

@@ -1,0 +1,41 @@
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-sm-5" id="addNoteForm"
+			style="background-color: #F9F8F4">
+
+			<div class="form-group">
+
+				<div ng-show="AddNoteBox">
+
+					<span style="cursor: pointer; float: right; position: sticky;">
+						<img style="height: 17px" alt="pin" src="images/pinblack.png">
+					</span>
+
+					<div contenteditable="true" data-ph="Title" id="notetitle"></div>
+
+				</div>
+
+				<br>
+
+				<div contenteditable="true" data-ph="Take a note..."
+					ng-click="ShowAddNote()" id="noteDescription"></div>
+
+				<br>
+
+				<div ng-show="AddNoteBox">
+
+					<div>
+						<img alt="color" src="images/colorpallete.svg" height="18px">
+						<img alt="reminder" src="images/reminder.svg" height="15px">
+						<img alt="image" src="images/image.svg" height="20px"> <img
+							alt="archive" src="images/archive.svg" height="20px">
+						<button ng-click="createNote()">DONE</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

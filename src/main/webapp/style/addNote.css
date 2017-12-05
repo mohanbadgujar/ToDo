@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+#addNoteForm{
+	margin-top: 10px;
+	margin-bottom: 25px;
+	margin-left: 20%;
+}
+
+#noteDescription{
+	outline:none;
+	padding-top:5px;
+}
+
+#notetitle{
+	outline:none;
+	padding-top:5px;
+}
+
+[contentEditable=true]:empty:not(:focus):before{
+	color:#989faa;
+	content:attr(data-ph)
+ }
