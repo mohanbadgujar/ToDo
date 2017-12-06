@@ -1,4 +1,14 @@
 @CHARSET "UTF-8";
+
+.card {
+	float: none;
+	margin: 10px 10px 10px 10px;
+	width: 550px;
+	background-color: white; 
+	min-height: 150px;
+	box-shadow: 0 0 10px black;
+}
+
 #addNoteForm{
 	margin-top: 10px;
 	margin-bottom: 25px;

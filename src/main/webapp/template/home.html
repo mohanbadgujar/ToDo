@@ -14,7 +14,6 @@
 					<h4>Pinned</h4>
 					<h4>Others</h4>
 					<div class="card"
-						style="background-color: #F9F8F4; margin: 10px 10px 10px 10px;"
 						ng-repeat="note in userNotes">
 
 						<div id="moreOptions" style="float: right">
@@ -23,9 +22,9 @@
 							</span>
 						</div>
 
-						<div id="edittitle" contenteditable="true" ng-bind="note.title"></div>
+						<div style="padding: 15px" id="edittitle" contenteditable="true" ng-bind="note.title"></div>
 						<br>
-						<div id="editdescription" contenteditable="true"
+						<div style="padding: 15px" id="editdescription" contenteditable="true"
 							ng-bind="note.description"></div>
 						<br>
 
